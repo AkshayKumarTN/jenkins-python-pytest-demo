@@ -22,17 +22,3 @@ pipeline {
         }
     }
 }
-```
-
-3. Save (Ctrl + S)
-
----
-
-### Step 3: Your Project Structure Should Look Like This
-```
-jenkins-python-pytest-demo/
-├── docker-compose.yml
-├── requirements.txt
-├── Jenkinsfile
-└── tests/
-    └── test_sample.py
