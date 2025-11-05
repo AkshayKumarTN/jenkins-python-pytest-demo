@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(0, '/var/jenkins_home/workspace/python-pytest-pipeline')
 from calculator import add, subtract, multiply, divide
 import pytest
 
