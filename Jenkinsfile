@@ -9,15 +9,23 @@ pipeline {
             }
         }
         
-        stage('Run tests') {
+        stage('Run tests with coverage') {
             steps {
-                sh './venv/bin/pytest --junitxml=report.xml || true'
+                sh './venv/bin/pytest --junitxml=report.xml --cov=. --cov-report=html --cov-report=term || true'
             }
         }
         
         stage('Publish Report') {
             steps {
                 junit 'report.xml'
+                publishHTML([
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: 'htmlcov',
+                    reportFiles: 'index.html',
+                    reportName: 'Coverage Report'
+                ])
             }
         }
     }
